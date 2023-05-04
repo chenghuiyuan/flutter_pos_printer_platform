@@ -8,5 +8,5 @@ class PrinterDevice {
   String? address;
   String? deviceId;
 
-  PrinterDevice({required this.name, this.address, this.vendorId, this.productId, required deviceId});
+  PrinterDevice({required this.name, this.address, this.vendorId, this.productId, this.deviceId});
 }
