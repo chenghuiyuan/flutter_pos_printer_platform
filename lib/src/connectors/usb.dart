@@ -24,7 +24,7 @@ class UsbPrinterInfo {
   String? name;
   String? model;
   bool isDefault = false;
-  String deviceId;
+  String? deviceId;
   UsbPrinterInfo.Android({
     required this.vendorId,
     required this.productId,
@@ -127,19 +127,11 @@ class UsbPrinterConnector implements PrinterConnector<UsbPrinterInput> {
           name: r['product'] ?? '',
           vendorId: r['vendorId'] ?? '',
           productId: r['productId'] ?? '',
+          deviceId: r['deviceId'] ?? '',
           // name: r['name'],
         );
       }
-    } else if (Platform.isWindows) {
-      final List<dynamic> results = await flutterPrinterChannel.invokeMethod('getList');
-      for (final device in results) {
-        var r = await device;
-        yield PrinterDevice(
-          name: r['name'],
-          // model: r['model'],
-        );
-      }
-    }
+    } 
   }
 
   Future<bool> _connect({UsbPrinterInput? model}) async {
