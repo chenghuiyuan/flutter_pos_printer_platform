@@ -17,11 +17,11 @@ class UsbPrinterInput extends BasePrinterInput {
 }
 
 class UsbPrinterInfo {
-  String vendorId;
-  String productId;
-  String manufacturer;
-  String product;
-  String name;
+  String? vendorId;
+  String? productId;
+  String? manufacturer;
+  String? product;
+  String? name;
   String? model;
   bool isDefault = false;
   String deviceId;
@@ -94,14 +94,14 @@ class UsbPrinterConnector implements PrinterConnector<UsbPrinterInput> {
       final List<dynamic> results = await flutterPrinterChannel.invokeMethod('getList');
       return results
           .map((dynamic r) => PrinterDiscovered<UsbPrinterInfo>(
-                name: r['product'],
+                name: r['product'] ?? '',
                 detail: UsbPrinterInfo.Android(
-                  vendorId: r['vendorId'],
-                  productId: r['productId'],
-                  manufacturer: r['manufacturer'],
-                  product: r['product'],
-                  name: r['name'],
-                  deviceId: r['deviceId'],
+                  vendorId: r['vendorId'] ?? '', 
+                  productId: r['productId'] ?? '',
+                  manufacturer: r['manufacturer'] ?? '',
+                  product: r['product'] ?? '',
+                  name: r['name'] ?? '',
+                  deviceId: r['deviceId'] ?? '',
                 ),
               ))
           .toList();
