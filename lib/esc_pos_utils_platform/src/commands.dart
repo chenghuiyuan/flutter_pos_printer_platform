@@ -50,7 +50,7 @@ const cReverseFeedN = '${esc}e'; // Print and reverse feed n lines [N]
 const cRasterImg = '$gs(L'; // Print image - raster bit format (graphics)
 const cRasterImg2 =
     '${gs}v0'; // Print image - raster bit format (bitImageRaster) [obsolete]
-const cBitImg = '$esc*'; // Print image - column format
+const cBitImg = '$esc*0'; // Print image - column format
 
 // Barcode
 const cBarcodeSelectPos =
